@@ -1,0 +1,28 @@
+<div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div ui-view="topsideHeader">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <div ui-view="asideLeft">
+            </div>
+        </div>
+        <div class="col-sm-10 col-md-10 col-lg-10">
+            <label>Search:
+                <input ng-model="searchGif" ng-change="searchFunc()">
+            </label>
+            <div class="image-container" when-scrolled="loadMore()">
+                <div class="row" ng-repeat="rows in chunkedData">
+                    <div class="col-xs-3 block-img" ng-repeat="gif in rows">
+                        <img class="gif-alone" ng-src="{{gif.images.fixed_width.url}}" alt="{{gif.slug}}" ng-click="showPopup(gif)" />
+                       <i class="ti ti-star" ng-click="addToStorage(gif)" ng-show="!gif.status"></i> 
+                       <i class="ti ti-close" ng-click="removeFromStorage(gif)" ng-show="gif.status"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

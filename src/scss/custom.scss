@@ -1,0 +1,118 @@
+//colors
+$color_mako_approx: #434a54;
+$color_governor_bay_approx: #2c3ca6;
+$white: #ffffff;
+$color_cerulean_blue_approx: #3f51b5;
+$color_mariner_approx: #187cd4;
+//fonts
+$font_0: Poppins;
+$font_1: sans-serif;
+.left-menu-title {
+    color: $color_mako_approx;
+    padding-left: 10px;
+    font-size: 20px;
+}
+.block-img {
+    
+    position:relative;
+     .ti {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    cursor: default; 
+}
+}
+
+.gif-alone {
+    width: 200px;
+}
+
+.add-user {
+    padding: 10px 10px 20px 10px;
+}
+
+.modalImage .image-wrapper {
+    text-align: center;
+}
+
+.modalImage .image-wrapper img {
+    max-width: 560px;
+    max-height: 560px;
+}
+
+.modalImage .image-description {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.image-container {
+height: 800px;
+overflow: auto;
+}
+
+.block-header-breadcrumb {
+    height: 50px;
+    text-align: left;
+    vertical-align: middle;
+    line-height: 50px;
+    font-size: 22px;
+    padding: 0 0 0 0;
+    background-color: $color_cerulean_blue_approx;
+    color: $white;
+}
+
+.menu-fa-bars {
+    width: 47px;
+    height: 50px;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    line-height: 50px;
+    color: $white;
+    background: $color_mariner_approx;
+}
+
+.template-content {
+    position: relative;
+    z-index: 10;
+    margin-right: 20px;
+    padding-top: 20px;
+}
+
+.left-menu .left-submenu {
+    a {
+        span {
+            color: $color_mako_approx;
+            padding-left: 10px;
+            font-size: 18px;
+        }
+        i {
+            color: $color_mako_approx;
+        }
+    }
+    ul li {
+        a {
+            padding-left: 35px;
+            font-size: 16px;
+            color: $color_mako_approx;
+        }
+        span {
+            padding-left: 0;
+            font-size: 16px;
+            color: $color_mako_approx;
+        }
+        ul li a {
+            padding-left: 45px;
+            font-size: 14px;
+            color: $color_mako_approx;
+        }
+    }
+}
+
+.form-horizontal .control-label .text-left {
+    text-align: left;
+}

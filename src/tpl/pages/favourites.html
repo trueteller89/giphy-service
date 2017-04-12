@@ -1,0 +1,24 @@
+<div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div ui-view="topsideHeader">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            <div ui-view="asideLeft">
+            </div>
+        </div>
+        <div class="col-sm-10 col-md-10 col-lg-10">
+            <div class="image-container" when-scrolled="loadMore()">
+                <div class="row" ng-repeat="rows in chunkedData">
+                    <div class="col-xs-3" ng-repeat="gif in rows">
+                        <img class="gif-alone" ng-src="http://media3.giphy.com/media/{{gif}}/200w.gif" alt="{{gif.slug}}" ng-click="showPopup(gif)" />
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

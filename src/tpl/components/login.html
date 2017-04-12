@@ -1,0 +1,14 @@
+
+<div ng-show="active">
+    <form class="frm-single" name="$ctrl.frmLogin" ng-submit="$ctrl.login($ctrl.frmLogin)" novalidate>
+        <div class="inside">
+            <div class="title"><strong>Welcome to giphy service</div>
+            <div class="frm-title">Please, login</div>
+            <div class="frm-input">
+                <input type="text" placeholder="username" class="frm-inp" ng-model="username" required autofocus><i class="fa fa-user frm-ico"></i></div>
+
+            <button ng-click="login()">Login<i class="fa fa-arrow-circle-right"></i></button>
+            <div class="frm-footer">GiphyService © 2017.</div>
+        </div>
+    </form>
+</div>
