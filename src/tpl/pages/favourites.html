@@ -14,7 +14,7 @@
             <div class="image-container" when-scrolled="loadMore()">
                 <div class="row" ng-repeat="rows in chunkedData">
                     <div class="col-xs-3" ng-repeat="gif in rows">
-                        <img class="gif-alone" ng-src="http://media3.giphy.com/media/{{gif}}/200w.gif" alt="{{gif.slug}}" ng-click="showPopup(gif)" />
+                        <img class="gif-alone" ng-src="{{gif.images.fixed_width.url}}" alt="{{gif.slug}}" ng-click="showPopup(gif)" />
                       
                     </div>
                 </div>

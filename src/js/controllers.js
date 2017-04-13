@@ -4,6 +4,36 @@ angular.module('app.controllers', ['ngRoute', 'app.services'])
     .controller('headerController', ["$scope", "propertiesService", function($scope, propertiesService) {
         $scope.title = propertiesService.getTitle();
     }])
+    .controller('uploadController', ["$scope", "propertiesService", "httpRequestsService", "storageService", "$timeout", function($scope, propertiesService, httpRequestsService, storageService, $timeout) {
+        if (!storageService.isSet("user")) { $location.path("/") } else {
+            var self = this;
+            $scope.successfullyLoaded = false;
+            propertiesService.setTitle('Giphy > Upload');
+            $scope.urlString = "";
+            $scope.upload = function() {
+                if ($scope.urlString) {
+                    var obj = {
+                        source_image_url: $scope.urlString
+                    };
+                    httpRequestsService.upload(obj).then(function(res) {
+                        if (res.data.data.id) {
+                            var collectionArray = [];
+                            if (storageService.isSet("myCollection")) {
+                                collectionArray = storageService.get("myCollection");
+                            }
+                            collectionArray.push(res.data.data.id);
+                            storageService.set("myCollection", collectionArray);
+                            $scope.urlString = "";
+                            $scope.successfullyLoaded = true;
+                            $timeout(function() {
+                                $scope.successfullyLoaded = false;
+                            }, 2000)
+                        }
+                    });
+                }
+            }
+        }
+    }])
     .controller('favouritesController', ["$scope", "propertiesService", "httpRequestsService", "storageService", function($scope, propertiesService, httpRequestsService, storageService) {
         if (!storageService.isSet("user")) { $location.path("/") } else {
             var self = this;
@@ -17,8 +47,11 @@ angular.module('app.controllers', ['ngRoute', 'app.services'])
                 return newArr;
             }
             if (storageService.isSet("myCollection")) {
-                $scope.gifs = storageService.get("myCollection");
-                $scope.chunkedData = chunk($scope.gifs, 4);
+                $scope.ids = storageService.get("myCollection");
+                httpRequestsService.getGifsByIds({ ids: $scope.ids.join(",") }).then(function(response) {
+                    $scope.gifs = response.data.data;
+                    $scope.chunkedData = chunk($scope.gifs, 4);
+                });
             }
         }
     }])

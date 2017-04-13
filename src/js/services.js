@@ -21,13 +21,19 @@ angular.module('app.services', ['ngRoute'])
                     params: options
                 });
             },
+            getGifsByIds: function(obj) {
+                var options = angular.extend({}, {
+                    ids: obj.ids
+                }, globalOptions);
+                return $http.get('http://api.giphy.com/v1/gifs', {
+                    params: options
+                });
+            },
             upload: function(obj) {
                 var options = angular.extend({}, {
-                    tags: obj.tags,
-                    username: obj.username,
-                    file: obj.file,
+                    source_image_url: obj.source_image_url
                 }, globalOptions);
-                return $http.post("http://upload.giphy.com/v1/gifs", { params: options });
+                return $http.post("http://upload.giphy.com/v1/gifs?api_key=dc6zaTOxFJmzC&callback=JSON_CALLBACK&source_image_url=" + options.source_image_url);
             }
         };
     }])

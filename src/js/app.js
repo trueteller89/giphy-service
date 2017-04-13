@@ -55,6 +55,24 @@ angular.module('app', [
                     }
                 },
             })
+                        .state('upload', {
+                url: '/upload',
+                views: {
+                    '': {
+                        templateUrl: '/build/tpl/pages/upload.html',
+                        controller: 'uploadController',
+                    },
+                    'asideLeft@upload': {
+                        templateUrl: '/build/tpl/blocks/aside-left.html',
+                        controller: 'asideController',
+
+                    },
+                    'topsideHeader@upload': {
+                        templateUrl: '/build/tpl/blocks/block-header.html',
+                        controller: 'headerController',
+                    }
+                },
+            })
             .state('default', {
 
                 url: '/',
